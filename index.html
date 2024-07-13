@@ -17,29 +17,65 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container">
+    <div id="uno">
+      <h2> Cuenta atrás</h2>
+      <p id="demo"></p>
+    </div>
+    <div id="otro" class="container">
       <div class="row">
         <div class="col-12 col-lg-6">
           <div class="text-center">
             <img src="images/one.jpg" class="img-fluid">
             <br>
-            <h1>Will You Marry Me?</h1>
-            <input type="button" onclick="location.href='yes.html'" value="Yes" class="btn btn-success">
+            <h1>Quieres casarte conmigo?</h1>
+            <input type="button" onclick="location.href='yes.html'" value="Si!" class="btn btn-success">
             <input type="button" onclick="location.href='confirm.html'" value="No" class="btn btn-danger">
             <br>
             <br>
-            <img src="images/two.jpg" class="img-fluid">
           </div>
           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
           <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-           <footer class=" text-center">
-            <a class="btn text-white btn-floating m-1" style="background-color: #333333;" href="https://github.com/SujinPhilip/willYouMarryme" role="button">
-              <i class="fab fa-github"></i>
-            </a>
-          </footer>
         </div>
       </div>
     </div>
   </body>
+  <script>
+  // Set the date we're counting down to
+  var countDownDate = new Date("Jul 13, 2024 21:23:00").getTime();
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  if (distance > 0) {
+      document.getElementById("uno").style.display = "block";
+      document.getElementById("otro").style.display = "none";
+  } else {
+      document.getElementById("otro").style.display = "block";
+      document.getElementById("uno").style.display = "none";
+  }
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+  }, 1000);
+  </script>
 </html>
